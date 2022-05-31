@@ -38,8 +38,8 @@ struct RestoDetail: View {
                         .padding()
                         
                 }
-                .background(SwiftUI.Color.white.edgesIgnoringSafeArea(.all))
-                .frame(maxWidth: .infinity)
+                .background(SwiftUI.Color.white.frame(width:.infinity))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(.brown, lineWidth: 2)
