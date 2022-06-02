@@ -8,45 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var auth: ModelData
+    @EnvironmentObject var modelData: ModelData
     
     @State private var select: Tab = .home
     
     enum Tab {
         case home
-        case list
         case user
     }
     
     var body: some View {
-        if (!auth.loggedIn) {
+        if (!modelData.loggedIn) {
             LoginPage()
-        }else{
+        } else {
             TabView(selection: $select){
-                HistoryHome()
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }
-                    .tag(Tab.home)
-                
                 RestoList()
+                    .tag(Tab.home)
                     .tabItem {
-                        Label("All Restos", systemImage: "list.bullet")
+                        Label("Dashboard", systemImage: "house")
                     }
-                    .tag(Tab.list)
+                    .onAppear {
+                        modelData.readAllResto(id: modelData.userData.id)
+                    }
                 
                 ProfileDetail()
+                    .tag(Tab.user)
                     .tabItem{
                         Label("Profile", systemImage: "person")
                     }
+                
             }
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .environmentObject(ModelData())
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+                .environmentObject(ModelData())
+        }
     }
 }

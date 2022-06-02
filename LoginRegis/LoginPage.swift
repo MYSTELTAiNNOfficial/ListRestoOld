@@ -2,7 +2,7 @@
 //  LoginPage.swift
 //  ListResto
 //
-//  Created by Macbook Pro on 29/05/22.
+//  Created by Syamsuddin Putra Riefli on 29/05/22.
 //
 
 import SwiftUI
@@ -19,30 +19,40 @@ struct LoginPage: View {
                 Text("Login")
                     .bold()
                     .padding(.bottom,20)
-                TextField("E-Mail", text: $email)
-                    .keyboardType(.emailAddress)
-                    .autocapitalization(.none)
-                    .padding()
-                    .cornerRadius(5)
-                    .shadow(radius: 5)
-                    .frame(width: 250, height: 40)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.brown, lineWidth: 2)
-                    )
-                    .padding(.bottom,10)
-                
-                SecureField("Password", text: $password)
-                    .autocapitalization(.none)
-                    .padding()
-                    .cornerRadius(5)
-                    .shadow(radius: 5)
-                    .frame(width: 250, height: 40)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(.brown, lineWidth: 2)
-                    )
-                    .padding(.bottom, 10)
+                HStack {
+                    Image(systemName: "envelope")
+                        .foregroundColor(.brown)
+                    TextField("E-Mail", text: $email)
+                        .keyboardType(.emailAddress)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .padding()
+                        .cornerRadius(5)
+                        .shadow(radius: 5)
+                        .frame(width: 250, height: 40)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.brown, lineWidth: 2)
+                        )
+                        .padding(.bottom,10)
+                }
+                HStack {
+                    Image(systemName: "key")
+                        .foregroundColor(.brown)
+                    SecureField("Password", text: $password)
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        .padding()
+                        .cornerRadius(5)
+                        .shadow(radius: 5)
+                        .frame(width: 250, height: 40)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(.brown, lineWidth: 2)
+                        )
+                        .padding(.bottom, 10)
+                }
+                .padding(.bottom)
                 
                 if (!modelData.correct) {
                     Text(modelData.userData.message)
@@ -69,10 +79,12 @@ struct LoginPage: View {
                         .cornerRadius(20)
                         .shadow(radius: 5)
                 }
-                VStack {
+                HStack {
                     Text("Create Account")
+                        .font(.subheadline)
                     NavigationLink(destination: RegistPage()) {
-                        Text("Register")
+                        Text("Here")
+                            .font(.subheadline)
                     }
                 }
                 .padding()

@@ -2,7 +2,7 @@
 //  ListRestoApp.swift
 //  ListResto
 //
-//  Created by Macbook Pro on 23/05/22.
+//  Created by Syamsuddin Putra Riefli on 23/05/22.
 //
 
 import SwiftUI

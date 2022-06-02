@@ -2,13 +2,13 @@
 //  Akun.swift
 //  ListResto
 //
-//  Created by Macbook Pro on 29/05/22.
+//  Created by Syamsuddin Putra Riefli on 29/05/22.
 //
 // Credit: Ipung DEV Academy @ YT
 
 import Foundation
 
-struct UserData : Hashable, Codable, Identifiable {
+struct UserData : Codable, Identifiable {
     var id: Int
     var user: String
     var err: Bool

@@ -2,7 +2,7 @@
 //  RegistPage.swift
 //  ListResto
 //
-//  Created by Macbook Pro on 29/05/22.
+//  Created by Syamsuddin Putra Riefli on 29/05/22.
 //
 
 import SwiftUI
@@ -22,6 +22,7 @@ struct RegistPage: View {
                 .bold()
                 .padding(.bottom,20)
             TextField("Nama", text: $nama)
+                .disableAutocorrection(true)
                 .padding()
                 .cornerRadius(5)
                 .shadow(radius: 5)
@@ -34,6 +35,7 @@ struct RegistPage: View {
             
             TextField("E-Mail", text: $email)
                 .keyboardType(.emailAddress)
+                .disableAutocorrection(true)
                 .autocapitalization(.none)
                 .padding()
                 .cornerRadius(5)
@@ -47,6 +49,7 @@ struct RegistPage: View {
             
             SecureField("Password", text: $password)
                 .autocapitalization(.none)
+                .disableAutocorrection(true)
                 .padding()
                 .cornerRadius(5)
                 .shadow(radius: 5)
@@ -59,6 +62,7 @@ struct RegistPage: View {
             
             SecureField("Confirm Password", text: $confirmpassword)
                 .autocapitalization(.none)
+                .disableAutocorrection(true)
                 .padding()
                 .cornerRadius(5)
                 .shadow(radius: 5)
@@ -103,9 +107,9 @@ struct RegistPage: View {
                 Text("Register")
                     .font(.headline)
                     .foregroundColor(.white)
-                    .padding()
-                    .frame(width: 150, height: 50)
-                    .background(.green)
+                    .padding(50)
+                    .frame(width: .infinity, height: 50)
+                    .background(.brown)
                     .cornerRadius(20)
                     .shadow(radius: 5)
             }

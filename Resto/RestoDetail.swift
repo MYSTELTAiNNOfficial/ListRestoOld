@@ -2,56 +2,71 @@
 //  RestoDetail.swift
 //  ListResto
 //
-//  Created by Macbook Pro on 23/05/22.
+//  Created by Syamsuddin Putra Riefli on 23/05/22.
 //
 
 import SwiftUI
-import MapKit
 
 struct RestoDetail: View {
-    @State private var tempat = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: -7.2915785, longitude: 112.6545816),
-        span: MKCoordinateSpan(
-            latitudeDelta: 0.005, longitudeDelta: 0.005)
-    )
+    @EnvironmentObject var modelData: ModelData
+    
+    
     var body: some View {
         ScrollView {
-            ZStack {
-                Map(coordinateRegion: $tempat)
-                    .ignoresSafeArea(edges: .top)
-                    .frame(height:250)
-                    .zIndex(0)
-                VStack {
-                    Image("Afterwork")
-                        .renderingMode(.original)
-                        .resizable()
-                        .frame(width:100, height: 100)
-                        .cornerRadius(100)
+            MapsResto(coordinate: modelData.restoData.mapResto)
+                .ignoresSafeArea(edges: .top)
+                .frame(height: 300)
+            
+            AsyncImage(url: URL(string: modelData.restoData.img))
+                .frame(width:200, height: 200)
+                .clipShape(Circle())
+                .overlay{
+                    Circle().stroke(.brown, lineWidth: 4)
                 }
-                    .zIndex(1)
-                    .offset(y:90)
-                VStack (alignment: .leading){
-                    Text("After Work")
-                        .foregroundColor(.brown)
-                        .font(.largeTitle)
-                        .padding()
-                        
+                .shadow(radius: 30)
+                .offset(y: -110)
+                .padding(.bottom,-110)
+            
+            VStack (alignment: .leading){
+                HStack {
+                    Text(modelData.restoData.nama_resto)
+                        .font(.title)
+                    if (modelData.restoData.fav == "true") {
+                        Image(systemName: "hand.thumbsup.fill")
+                            .foregroundColor(.brown)
+                            .imageScale(.medium)
+                    } else {
+                        Image(systemName: "hand.thumbsdown.fill")
+                            .foregroundColor(.brown)
+                            .imageScale(.medium)
+                    }
+                    
+                    Spacer()
+                    
+                    Text("\(modelData.restoData.rating)/5")
+                    Image(systemName: "star.fill")
+                        .foregroundColor(.yellow)
+                        .imageScale(.medium)
                 }
-                .background(SwiftUI.Color.white.frame(width:.infinity))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(.brown, lineWidth: 2)
-                )
-                .offset(y:120)
+                
+                Divider()
+                
+                Text("About \(modelData.restoData.nama_resto)")
+                    .font(.title3)
+                Text(modelData.restoData.detail)
+                    .font(.subheadline)
             }
+            .padding()
         }
+        .navigationTitle(modelData.restoData.nama_resto)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
+
 
 struct RestoDetail_Previews: PreviewProvider {
     static var previews: some View {
         RestoDetail()
+            .environmentObject(ModelData())
     }
 }

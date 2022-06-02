@@ -2,7 +2,7 @@
 //  ResponseReceive.swift
 //  ListResto
 //
-//  Created by Macbook Pro on 30/05/22.
+//  Created by Syamsuddin Putra Riefli on 30/05/22.
 //
 
 import Foundation
