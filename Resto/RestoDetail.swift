@@ -18,6 +18,7 @@ struct RestoDetail: View {
                 .frame(height: 300)
             
             AsyncImage(url: URL(string: modelData.restoData.img))
+                .aspectRatio(contentMode: .fit)
                 .frame(width:200, height: 200)
                 .clipShape(Circle())
                 .overlay{

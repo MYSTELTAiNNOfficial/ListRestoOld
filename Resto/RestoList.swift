@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct RestoList: View {
+    init(){
+        UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).adjustsFontSizeToFitWidth = true
+    }
+    
     @EnvironmentObject var modelData: ModelData
     @State private var selectResto: AllRestoData?
     

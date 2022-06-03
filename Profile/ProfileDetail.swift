@@ -10,7 +10,12 @@ import SwiftUI
 struct ProfileDetail: View {
     @EnvironmentObject var modelData: ModelData
     var body: some View {
-        Text(modelData.userData.user)
+        VStack {
+            Image(systemName: "person.fill")
+                .font(.system(size: 150))
+                .padding(.bottom)
+            Text("Hi, \(modelData.userData.user)!")
+        }
     }
 }
 

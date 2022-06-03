@@ -155,6 +155,7 @@ struct AddResto: View {
                         .scaledToFit()
                     
                 }
+                .padding()
                 .sheet(isPresented: $showImgPick, content: {
                     ImagePicker(image: self.$selectImg)
                 })
@@ -167,7 +168,7 @@ struct AddResto: View {
                 
                 Button (action: {
                     var tempImg: UIImage = self.selectImg.asUIImage()
-                    var imageCompr: Data = tempImg.jpegData(compressionQuality: 0.1) ?? Data ()
+                    var imageCompr: Data = tempImg.jpegData(compressionQuality: 0.5) ?? Data ()
                     
                     self.encodedImg = imageCompr.base64EncodedString()
                     
@@ -180,7 +181,7 @@ struct AddResto: View {
                         modelData.addResto(id: String(modelData.userData.id), nama_resto: self.nama_resto, img: self.encodedImg, rating: self.rating, detail: self.detail, latitude: self.latitude, longitude: self.longitude, favorite: self.fav)
                     }
                 }){
-                    Text("Register")
+                    Text("Add Resto")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(50)
